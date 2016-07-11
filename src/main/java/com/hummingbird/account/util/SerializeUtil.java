@@ -1,4 +1,4 @@
-package com.hummingbird.propagate.util;
+package com.hummingbird.account.util;
 
 
 import java.io.ByteArrayInputStream;

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hummingbird.account.mapper.ConfirmResultMapper" >
+  <resultMap id="BaseResultMap" type="com.hummingbird.account.entity.ConfirmResult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="accountNo" property="accountno" jdbcType="VARCHAR" />
+    <result column="confirmTime" property="confirmtime" jdbcType="TIMESTAMP" />
+    <result column="confirmResult" property="confirmresult" jdbcType="VARCHAR" />
+    <result column="tradeCurrency" property="tradecurrency" jdbcType="VARCHAR" />
+    <result column="tradeType" property="tradetype" jdbcType="VARCHAR" />
+    <result column="tradeNum" property="tradenum" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="charge" property="charge" jdbcType="DECIMAL" />
+    <result column="clearingBalance" property="clearingbalance" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, accountNo, confirmTime, confirmResult, tradeCurrency, tradeType, tradeNum, amount, 
+    charge, clearingBalance, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_confirm_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_confirm_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hummingbird.account.entity.ConfirmResult" >
+    insert into t_confirm_result (id, accountNo, confirmTime, 
+      confirmResult, tradeCurrency, tradeType, 
+      tradeNum, amount, charge, 
+      clearingBalance, remark)
+    values (#{id,jdbcType=INTEGER}, #{accountno,jdbcType=VARCHAR}, #{confirmtime,jdbcType=TIMESTAMP}, 
+      #{confirmresult,jdbcType=VARCHAR}, #{tradecurrency,jdbcType=VARCHAR}, #{tradetype,jdbcType=VARCHAR}, 
+      #{tradenum,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{charge,jdbcType=DECIMAL}, 
+      #{clearingbalance,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hummingbird.account.entity.ConfirmResult" >
+    insert into t_confirm_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="accountno != null" >
+        accountNo,
+      </if>
+      <if test="confirmtime != null" >
+        confirmTime,
+      </if>
+      <if test="confirmresult != null" >
+        confirmResult,
+      </if>
+      <if test="tradecurrency != null" >
+        tradeCurrency,
+      </if>
+      <if test="tradetype != null" >
+        tradeType,
+      </if>
+      <if test="tradenum != null" >
+        tradeNum,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="charge != null" >
+        charge,
+      </if>
+      <if test="clearingbalance != null" >
+        clearingBalance,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountno != null" >
+        #{accountno,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmtime != null" >
+        #{confirmtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmresult != null" >
+        #{confirmresult,jdbcType=VARCHAR},
+      </if>
+      <if test="tradecurrency != null" >
+        #{tradecurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="tradetype != null" >
+        #{tradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="tradenum != null" >
+        #{tradenum,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="charge != null" >
+        #{charge,jdbcType=DECIMAL},
+      </if>
+      <if test="clearingbalance != null" >
+        #{clearingbalance,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hummingbird.account.entity.ConfirmResult" >
+    update t_confirm_result
+    <set >
+      <if test="accountno != null" >
+        accountNo = #{accountno,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmtime != null" >
+        confirmTime = #{confirmtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmresult != null" >
+        confirmResult = #{confirmresult,jdbcType=VARCHAR},
+      </if>
+      <if test="tradecurrency != null" >
+        tradeCurrency = #{tradecurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="tradetype != null" >
+        tradeType = #{tradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="tradenum != null" >
+        tradeNum = #{tradenum,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="charge != null" >
+        charge = #{charge,jdbcType=DECIMAL},
+      </if>
+      <if test="clearingbalance != null" >
+        clearingBalance = #{clearingbalance,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hummingbird.account.entity.ConfirmResult" >
+    update t_confirm_result
+    set accountNo = #{accountno,jdbcType=VARCHAR},
+      confirmTime = #{confirmtime,jdbcType=TIMESTAMP},
+      confirmResult = #{confirmresult,jdbcType=VARCHAR},
+      tradeCurrency = #{tradecurrency,jdbcType=VARCHAR},
+      tradeType = #{tradetype,jdbcType=VARCHAR},
+      tradeNum = #{tradenum,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      charge = #{charge,jdbcType=DECIMAL},
+      clearingBalance = #{clearingbalance,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

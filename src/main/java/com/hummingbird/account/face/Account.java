@@ -3,7 +3,7 @@
  * Account.java
  * 版本所有 深圳市蜂鸟娱乐有限公司 2013-2014
  */
-package com.hummingbird.propagate.face;
+package com.hummingbird.account.face;
 
 /**
  * @author huangjiej_2

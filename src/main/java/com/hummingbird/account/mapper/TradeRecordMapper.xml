@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hummingbird.account.mapper.TradeRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.hummingbird.account.entity.TradeRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="serialNo" property="serialno" jdbcType="VARCHAR" />
+    <result column="payNo" property="payno" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="tradeTime" property="tradetime" jdbcType="TIMESTAMP" />
+    <result column="tradeType" property="tradetype" jdbcType="VARCHAR" />
+    <result column="tradeCurrency" property="tradecurrency" jdbcType="VARCHAR" />
+    <result column="insertTime" property="inserttime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serialNo, payNo, amount, tradeTime, tradeType, tradeCurrency, insertTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_trade_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_trade_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hummingbird.account.entity.TradeRecord" >
+    insert into t_trade_record (id, serialNo, payNo, 
+      amount, tradeTime, tradeType, 
+      tradeCurrency, insertTime)
+    values (#{id,jdbcType=INTEGER}, #{serialno,jdbcType=VARCHAR}, #{payno,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{tradetime,jdbcType=TIMESTAMP}, #{tradetype,jdbcType=VARCHAR}, 
+      #{tradecurrency,jdbcType=VARCHAR}, #{inserttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hummingbird.account.entity.TradeRecord" >
+    insert into t_trade_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serialno != null" >
+        serialNo,
+      </if>
+      <if test="payno != null" >
+        payNo,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="tradetime != null" >
+        tradeTime,
+      </if>
+      <if test="tradetype != null" >
+        tradeType,
+      </if>
+      <if test="tradecurrency != null" >
+        tradeCurrency,
+      </if>
+      <if test="inserttime != null" >
+        insertTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serialno != null" >
+        #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="payno != null" >
+        #{payno,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="tradetime != null" >
+        #{tradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradetype != null" >
+        #{tradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="tradecurrency != null" >
+        #{tradecurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="inserttime != null" >
+        #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hummingbird.account.entity.TradeRecord" >
+    update t_trade_record
+    <set >
+      <if test="serialno != null" >
+        serialNo = #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="payno != null" >
+        payNo = #{payno,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="tradetime != null" >
+        tradeTime = #{tradetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradetype != null" >
+        tradeType = #{tradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="tradecurrency != null" >
+        tradeCurrency = #{tradecurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="inserttime != null" >
+        insertTime = #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hummingbird.account.entity.TradeRecord" >
+    update t_trade_record
+    set serialNo = #{serialno,jdbcType=VARCHAR},
+      payNo = #{payno,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      tradeTime = #{tradetime,jdbcType=TIMESTAMP},
+      tradeType = #{tradetype,jdbcType=VARCHAR},
+      tradeCurrency = #{tradecurrency,jdbcType=VARCHAR},
+      insertTime = #{inserttime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

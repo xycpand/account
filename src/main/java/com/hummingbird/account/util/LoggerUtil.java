@@ -1,4 +1,4 @@
-package com.hummingbird.propagate.util;
+package com.hummingbird.account.util;
 
 
 import org.apache.log4j.Logger;

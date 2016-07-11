@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hummingbird.account.mapper.ConfirmDifferenceMapper" >
+  <resultMap id="BaseResultMap" type="com.hummingbird.account.entity.ConfirmDifference" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="serialNo" property="serialno" jdbcType="VARCHAR" />
+    <result column="differenceType" property="differencetype" jdbcType="VARCHAR" />
+    <result column="differenceAmount" property="differenceamount" jdbcType="DECIMAL" />
+    <result column="insertTime" property="inserttime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serialNo, differenceType, differenceAmount, insertTime, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_confirm_difference
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_confirm_difference
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hummingbird.account.entity.ConfirmDifference" >
+    insert into t_confirm_difference (id, serialNo, differenceType, 
+      differenceAmount, insertTime, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{serialno,jdbcType=VARCHAR}, #{differencetype,jdbcType=VARCHAR}, 
+      #{differenceamount,jdbcType=DECIMAL}, #{inserttime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hummingbird.account.entity.ConfirmDifference" >
+    insert into t_confirm_difference
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serialno != null" >
+        serialNo,
+      </if>
+      <if test="differencetype != null" >
+        differenceType,
+      </if>
+      <if test="differenceamount != null" >
+        differenceAmount,
+      </if>
+      <if test="inserttime != null" >
+        insertTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serialno != null" >
+        #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="differencetype != null" >
+        #{differencetype,jdbcType=VARCHAR},
+      </if>
+      <if test="differenceamount != null" >
+        #{differenceamount,jdbcType=DECIMAL},
+      </if>
+      <if test="inserttime != null" >
+        #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hummingbird.account.entity.ConfirmDifference" >
+    update t_confirm_difference
+    <set >
+      <if test="serialno != null" >
+        serialNo = #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="differencetype != null" >
+        differenceType = #{differencetype,jdbcType=VARCHAR},
+      </if>
+      <if test="differenceamount != null" >
+        differenceAmount = #{differenceamount,jdbcType=DECIMAL},
+      </if>
+      <if test="inserttime != null" >
+        insertTime = #{inserttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hummingbird.account.entity.ConfirmDifference" >
+    update t_confirm_difference
+    set serialNo = #{serialno,jdbcType=VARCHAR},
+      differenceType = #{differencetype,jdbcType=VARCHAR},
+      differenceAmount = #{differenceamount,jdbcType=DECIMAL},
+      insertTime = #{inserttime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
