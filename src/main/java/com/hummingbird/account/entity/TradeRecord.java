@@ -24,11 +24,6 @@ public class TradeRecord {
     private Long amount;
 
     /**
-     * 交易时间
-     */
-    private Date tradetime;
-
-    /**
      * 交易类型
      */
     private String tradetype;
@@ -37,6 +32,11 @@ public class TradeRecord {
      * 交易币种
      */
     private String tradecurrency;
+
+    /**
+     * 交易时间
+     */
+    private Date tradetime;
 
     /**
      * 插入时间
@@ -97,21 +97,6 @@ public class TradeRecord {
     }
 
     /**
-     * @return 交易时间
-     */
-    public Date getTradetime() {
-        return tradetime;
-    }
-
-    /**
-     * @param tradetime 
-	 *            交易时间
-     */
-    public void setTradetime(Date tradetime) {
-        this.tradetime = tradetime;
-    }
-
-    /**
      * @return 交易类型
      */
     public String getTradetype() {
@@ -139,6 +124,21 @@ public class TradeRecord {
      */
     public void setTradecurrency(String tradecurrency) {
         this.tradecurrency = tradecurrency == null ? null : tradecurrency.trim();
+    }
+
+    /**
+     * @return 交易时间
+     */
+    public Date getTradetime() {
+        return tradetime;
+    }
+
+    /**
+     * @param tradetime 
+	 *            交易时间
+     */
+    public void setTradetime(Date tradetime) {
+        this.tradetime = tradetime;
     }
 
     /**
@@ -172,9 +172,9 @@ public class TradeRecord {
             && (this.getSerialno() == null ? other.getSerialno() == null : this.getSerialno().equals(other.getSerialno()))
             && (this.getPayno() == null ? other.getPayno() == null : this.getPayno().equals(other.getPayno()))
             && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
-            && (this.getTradetime() == null ? other.getTradetime() == null : this.getTradetime().equals(other.getTradetime()))
             && (this.getTradetype() == null ? other.getTradetype() == null : this.getTradetype().equals(other.getTradetype()))
             && (this.getTradecurrency() == null ? other.getTradecurrency() == null : this.getTradecurrency().equals(other.getTradecurrency()))
+            && (this.getTradetime() == null ? other.getTradetime() == null : this.getTradetime().equals(other.getTradetime()))
             && (this.getInserttime() == null ? other.getInserttime() == null : this.getInserttime().equals(other.getInserttime()));
     }
 
@@ -186,9 +186,9 @@ public class TradeRecord {
         result = prime * result + ((getSerialno() == null) ? 0 : getSerialno().hashCode());
         result = prime * result + ((getPayno() == null) ? 0 : getPayno().hashCode());
         result = prime * result + ((getAmount() == null) ? 0 : getAmount().hashCode());
-        result = prime * result + ((getTradetime() == null) ? 0 : getTradetime().hashCode());
         result = prime * result + ((getTradetype() == null) ? 0 : getTradetype().hashCode());
         result = prime * result + ((getTradecurrency() == null) ? 0 : getTradecurrency().hashCode());
+        result = prime * result + ((getTradetime() == null) ? 0 : getTradetime().hashCode());
         result = prime * result + ((getInserttime() == null) ? 0 : getInserttime().hashCode());
         return result;
     }

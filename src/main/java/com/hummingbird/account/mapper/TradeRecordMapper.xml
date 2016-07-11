@@ -6,13 +6,13 @@
     <result column="serialNo" property="serialno" jdbcType="VARCHAR" />
     <result column="payNo" property="payno" jdbcType="VARCHAR" />
     <result column="amount" property="amount" jdbcType="DECIMAL" />
-    <result column="tradeTime" property="tradetime" jdbcType="TIMESTAMP" />
     <result column="tradeType" property="tradetype" jdbcType="VARCHAR" />
     <result column="tradeCurrency" property="tradecurrency" jdbcType="VARCHAR" />
+    <result column="tradeTime" property="tradetime" jdbcType="TIMESTAMP" />
     <result column="insertTime" property="inserttime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, serialNo, payNo, amount, tradeTime, tradeType, tradeCurrency, insertTime
+    id, serialNo, payNo, amount, tradeType, tradeCurrency, tradeTime, insertTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,11 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.hummingbird.account.entity.TradeRecord" >
     insert into t_trade_record (id, serialNo, payNo, 
-      amount, tradeTime, tradeType, 
-      tradeCurrency, insertTime)
+      amount, tradeType, tradeCurrency, 
+      tradeTime, insertTime)
     values (#{id,jdbcType=INTEGER}, #{serialno,jdbcType=VARCHAR}, #{payno,jdbcType=VARCHAR}, 
-      #{amount,jdbcType=DECIMAL}, #{tradetime,jdbcType=TIMESTAMP}, #{tradetype,jdbcType=VARCHAR}, 
-      #{tradecurrency,jdbcType=VARCHAR}, #{inserttime,jdbcType=TIMESTAMP})
+      #{amount,jdbcType=DECIMAL}, #{tradetype,jdbcType=VARCHAR}, #{tradecurrency,jdbcType=VARCHAR}, 
+      #{tradetime,jdbcType=TIMESTAMP}, #{inserttime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hummingbird.account.entity.TradeRecord" >
     insert into t_trade_record
@@ -47,14 +47,14 @@
       <if test="amount != null" >
         amount,
       </if>
-      <if test="tradetime != null" >
-        tradeTime,
-      </if>
       <if test="tradetype != null" >
         tradeType,
       </if>
       <if test="tradecurrency != null" >
         tradeCurrency,
+      </if>
+      <if test="tradetime != null" >
+        tradeTime,
       </if>
       <if test="inserttime != null" >
         insertTime,
@@ -73,14 +73,14 @@
       <if test="amount != null" >
         #{amount,jdbcType=DECIMAL},
       </if>
-      <if test="tradetime != null" >
-        #{tradetime,jdbcType=TIMESTAMP},
-      </if>
       <if test="tradetype != null" >
         #{tradetype,jdbcType=VARCHAR},
       </if>
       <if test="tradecurrency != null" >
         #{tradecurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="tradetime != null" >
+        #{tradetime,jdbcType=TIMESTAMP},
       </if>
       <if test="inserttime != null" >
         #{inserttime,jdbcType=TIMESTAMP},
@@ -99,14 +99,14 @@
       <if test="amount != null" >
         amount = #{amount,jdbcType=DECIMAL},
       </if>
-      <if test="tradetime != null" >
-        tradeTime = #{tradetime,jdbcType=TIMESTAMP},
-      </if>
       <if test="tradetype != null" >
         tradeType = #{tradetype,jdbcType=VARCHAR},
       </if>
       <if test="tradecurrency != null" >
         tradeCurrency = #{tradecurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="tradetime != null" >
+        tradeTime = #{tradetime,jdbcType=TIMESTAMP},
       </if>
       <if test="inserttime != null" >
         insertTime = #{inserttime,jdbcType=TIMESTAMP},
@@ -119,9 +119,9 @@
     set serialNo = #{serialno,jdbcType=VARCHAR},
       payNo = #{payno,jdbcType=VARCHAR},
       amount = #{amount,jdbcType=DECIMAL},
-      tradeTime = #{tradetime,jdbcType=TIMESTAMP},
       tradeType = #{tradetype,jdbcType=VARCHAR},
       tradeCurrency = #{tradecurrency,jdbcType=VARCHAR},
+      tradeTime = #{tradetime,jdbcType=TIMESTAMP},
       insertTime = #{inserttime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
