@@ -2,6 +2,9 @@ package com.hummingbird.account.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hummingbird.account.entity.ConfirmDifference;
 import com.hummingbird.account.entity.ConfirmResult;
@@ -10,7 +13,7 @@ import com.hummingbird.account.mapper.ConfirmResultMapper;
 import com.hummingbird.account.mapper.TradeRecordMapper;
 import com.hummingbird.account.services.ConfirmAccountService;
 import com.hummingbird.common.exception.BusinessException;
-
+@Service
 public class ConfirmAccountServiceImpl implements ConfirmAccountService{
 	org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(this.getClass());
 	@Autowired
@@ -20,12 +23,17 @@ public class ConfirmAccountServiceImpl implements ConfirmAccountService{
 	@Autowired
 	ConfirmDifferenceMapper confirmDifferenceDao;
 	
-	@Override
+	@Override	
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, value = "txManager")
 	public void confirmAccount() throws BusinessException {
+		log.debug("开始对账：");
 	     //验证数商户号是否一致
 		
 		
-		 //获取上游对账文件中第一条的交易流水号和最后一条的交易流水号,根据这2个交易流水号,查询我方的所有记录
+		 //获取上游对账文件中第一条的交易流水号和最后一条的交易流水号
+		
+		
+		 //根据上一步获取的2个交易流水号,查询我方的所有交易记录
 		
 		
 		 //根据上一次对账的最后一条的交易流水号和本次对账的第一条交易流水号,进行查询,并得到我方多出来的交易记录
@@ -44,10 +52,11 @@ public class ConfirmAccountServiceImpl implements ConfirmAccountService{
 		//confirmResult.setAmount(amount);
 		 //把对账的结果进行保存到数据库
 		saveConfirmResult(confirmResult);
-		
+		log.debug("结束对账。");
 	}
 
-	@Override
+	@Override	
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, value = "txManager")
 	public void saveConfirmResult(ConfirmResult confirmResult) throws BusinessException {
 		try{
 			confirmResultDao.insert(confirmResult);
@@ -58,6 +67,7 @@ public class ConfirmAccountServiceImpl implements ConfirmAccountService{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, value = "txManager")
 	public void saveConfirmDifference(ConfirmDifference confirmDifference) throws BusinessException {
 		try{
 			confirmDifferenceDao.insert(confirmDifference);

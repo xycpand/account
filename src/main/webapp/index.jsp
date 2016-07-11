@@ -41,39 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<table>
 	<tr><td colspan="2"><b>接口测试</b></td></tr>
-	     <tr> 
-	         <td><input type="button"  value="保存文章分享记录"  onclick='setbinding("/userRecord/saveShareRecord","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openId\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\",\"articleId\":1,\"originalUrl\":\"http://xp.fengniao.info/article/show.html?x_articleId=1\",\"remark\":\"分享时填写的分享内容\",\"shareType\":null,\"shareTarget\":null}}}}")'></td>
-	         <td><input type="button"  value="保存文章信息"  onclick='setbinding("/userRecord/saveArticle","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openId\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\",\"articleId\":1,\"title\":\"我就是文章标题\",\"content\":null,\"tagIds\":\"1&2\",\"tagNames\":\"1号标签&2号标签\"}}}}")'></td>
-	     </tr>
-		<tr><td colspan="2"><b>测试js</b></td></tr>
-		<tr>
-		    <td>
-		       <button onclick="window.location.href='<%=basePath%>userRecord/testJS.html?x_reader=oCmwKvwib0Ahz8ugW0lFk8HTpljI&x_articleId=1&x_sharer=op3EiwqwcqMFpRq04dQL1k1neb5M'">进入测试js页面</button>
-		    </td>
-		    <td>
-		       <button onclick="window.location.href='<%=basePath%>userRecord/article.html?x_reader=oCmwKvwib0Ahz8ugW0lFk8HTpljI&x_articleId=1'">进入阅读文章页面</button>
-		    </td>
-		     <td>
-		       <button onclick="window.location.href='<%=basePath%>userRecord/article.html?x_reader=999&x_sharer=op3EiwqwcqMFpRq04dQL1k1neb5M&x_articleId=1'">通过分享链接进入阅读文章页面</button>
-		    </td>
-		   <td>
-		<%--   <!--测试 保存用户阅读记录 -->
-	       <a href="<%=basePath%>userRecord/userread.js?openId=oCmwKv9ErXuGDmJYWGV2KSxEYj6A&originalUrl=www.baidu.com&originalOpenId=FnVp5baN9aSIUcwo&articleId=1">测试请求userrecord.js内容</a>
-	      <!--测试 保存用户分享记录 -->
-	       <a href="<%=basePath%>userRecord/userappend.js?openId=oCmwKvxo1PnytDlJEuXeQVFC5xwo&originalUrl=www.baidu.com&originalOpenId=oCmwKv9ErXuGDmJYWGV2KSxEYj6A&articleId=1">测试请求userappend.js内容</a>
-	      <!--测试 上报微信用户信息  -->
-	       <a href="<%=basePath%>userRecord/userinfo.js?openid=FnVp5baN9aSIUcwo&nickname=小明">测试请求userinfo.js内容</a></td>
-        --%>
-         </tr>
-	<tr><td colspan="6">标签相关接口</td></tr>
-	<tr>
-		<td><input type="button"  value="查询用户标签"  onclick='setbinding("/userTag/queryUserTag","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openid\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\"}}")'></td>
-		<td><input type="button"  value="查询某文章的标签"  onclick='setbinding("/userTag/queryArticleTag","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openid\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\",\"articleId\":1}}")'></td>
-		<td><input type="button"  value="文章添加标签"  onclick='setbinding("/userTag/addArticleTag","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openid\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\",\"articleId\":1,\"tagName\":[\"宝贝\",\"游戏\",\"活动\"]}}")'></td>
-		<td><input type="button"  value="文章删除标签"  onclick='setbinding("/userTag/delArticleTag","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openid\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\",\"articleId\":1,\"tagName\":[\"宝贝\",\"游戏\",\"活动\"]}}")'></td>
-		<td><input type="button"  value="查询热门标签"  onclick='setbinding("/userTag/queryHotTag","{\"app\":{\"appId\":\"propagate\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{\"openid\":\"op3EiwqSh-WmyWvP1776y6DBW5bc\"}}")'></td>
-	
-	</tr>
+     <tr> 
+         <td><input type="button"  value="对账"  onclick='setbinding("/confirm/confirmAccount","{\"app\":{\"appId\":\"account\",\"timeStamp\":\"TIMESTAMP\",  \"nonce\":\"NONCE\", \"signature\":\"21aa0011472249b4292e81504f3917bd\"  },  \"body\":{}}}}")'></td>
+     </tr>
 </table>
   </body>
     <script>
